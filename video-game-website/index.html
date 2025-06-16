@@ -8,7 +8,11 @@
 </head>
 <body>
     <header>
-        <h1>Ryhmän edistyminen - the game</h1>
+        <h1>
+            <span class="header-line">Ryhmä 13 edistyminen</span>
+            <span class="header-line">THE GAME</span>
+             <span class="header-line updated">Päivitetty 16.6.2025</span>
+        </h1>
     </header>
     <main>
         <!-- Flexbox for YTO -->
@@ -19,8 +23,9 @@
             </div>
             <div class="progress-content">
                 <progress id="yto" value="1" max="100"></progress>
-                <canvas id="yto-canvas" class="progress-canvas" width="30" height="30"></canvas>
-            </div>
+                <canvas id="yto-canvas" class="progress-canvas"></canvas>
+           
+            </div>     <canvas id="gameCanvas"></canvas>
         </div>
 
         <!-- Flexbox for Tutkinnon osat -->
@@ -31,13 +36,15 @@
             </div>
             <div class="progress-content">
                 <progress id="tutkinnon-osat" value="2" max="100"></progress>
-                <canvas id="tutkinnon-osat-canvas" class="progress-canvas" width="30" height="30"></canvas>
+                <canvas id="tutkinnon-osat-canvas" class="progress-canvas"></canvas>
             </div>
         </div>
     </main>
     <footer>
         <p>&copy; 2025 Game Programmers inc.</p>
     </footer>
-    <script src="scripts/script.js"></script>
+    <!-- Mark scripts as modules -->
+    <script type="module" src="scripts/script.js"></script>
+    <script type="module" src="scripts/animation.js"></script>
 </body>
 </html>
