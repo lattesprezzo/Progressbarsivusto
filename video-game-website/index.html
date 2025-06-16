@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryhmän edistyminen - the game</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ryhmän edistyminen - the game</h1>
+    </header>
+    <main>
+        <!-- Flexbox for YTO -->
+        <div class="progress-box yto-box">
+            <div class="progress-title">
+                <span class="bar-name">YTO</span>
+                <span class="bar-percentage" id="yto-percentage">1%</span>
+            </div>
+            <div class="progress-content">
+                <progress id="yto" value="1" max="100"></progress>
+                <canvas id="yto-canvas" class="progress-canvas" width="30" height="30"></canvas>
+            </div>
+        </div>
+
+        <!-- Flexbox for Tutkinnon osat -->
+        <div class="progress-box tutkinnon-osat-box">
+            <div class="progress-title">
+                <span class="bar-name">Tutkinnon osat</span>
+                <span class="bar-percentage" id="tutkinnon-osat-percentage">2%</span>
+            </div>
+            <div class="progress-content">
+                <progress id="tutkinnon-osat" value="2" max="100"></progress>
+                <canvas id="tutkinnon-osat-canvas" class="progress-canvas" width="30" height="30"></canvas>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Game Programmers inc.</p>
+    </footer>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

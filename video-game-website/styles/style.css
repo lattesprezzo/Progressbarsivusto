@@ -1,0 +1,137 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+  color: #ffffff;
+}
+
+header {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #0f3460, #1a1a2e);
+  padding: 20px;
+  font-size: 2em;
+}
+
+main {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px; /* Add spacing between progress boxes */
+}
+
+.progress-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 20px;
+  height: 12vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+/* YTO box color */
+.yto-box {
+  background: linear-gradient(90deg, #4a90e2, #357ab7);
+}
+
+/* Tutkinnon osat box color */
+.tutkinnon-osat-box {
+  background: linear-gradient(90deg, #6a4ae2, #5735b7);
+}
+
+/* Title section inside the progress box */
+.progress-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.bar-name {
+  text-align: left;
+}
+
+.bar-percentage {
+  text-align: right;
+}
+
+/* Progress content section */
+.progress-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative; /* Make the progress bar a relative container for the canvas */
+}
+
+progress {
+  flex: 1;
+  height: 9vh;
+  border-radius: 10px;
+  overflow: hidden;
+  appearance: none;
+  position: relative;
+  display: flex;
+  border: 1px solid black;
+}
+progress::-webkit-progress-bar {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 10px;
+  animation: glow 2s infinite alternate;
+}
+
+/* YTO progress bar color */
+#yto::-webkit-progress-value {
+  background: linear-gradient(90deg, #4a90e2, #357ab7);
+}
+
+/* Tutkinnon osat progress bar color */
+#tutkinnon-osat::-webkit-progress-value {
+  background: linear-gradient(90deg, #6a4ae2, #5735b7);
+}
+
+/* Glowing animation */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 0, 255, 1);
+  }
+}
+
+.progress-canvas {
+    width: 4em;
+    height: 100%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+footer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #0f3460, #1a1a2e);
+  padding: 20px;
+  font-size: 1em;
+}
