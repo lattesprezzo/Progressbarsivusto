@@ -2,7 +2,7 @@ const spriteSheet = new Image();
 spriteSheet.src = "images/snail.png"; // Path to the spritesheet
 
 // Animation settings
-const frameWidth = 90; // Width of each frame
+const frameWidth = 100; // Width of each frame
 const frameHeight = 68; // Height of each frame
 const columns = 3; // Number of columns in the spritesheet (1 row, 3 frames)
 const totalFrames = columns; // Total number of frames
