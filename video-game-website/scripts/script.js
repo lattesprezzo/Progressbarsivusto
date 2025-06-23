@@ -1,47 +1,62 @@
 import { drawFrame, startAnimation } from "./animation.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Variables to control progress bar percentages
-    const ytoPercentage = 30.5; // Change this value to update the YTO progress bar
-    const tutkinnonOsatPercentage = 17.6; // Change this value to update the Tutkinnon osat progress bar
+document.addEventListener("DOMContentLoaded", async () => {
+    const excelUrl = "https://eduamiedu-my.sharepoint.com/:x:/g/personal/lauri_ahmas_taitotalo_fi/EbJVp-4Y13dEqEIVzvZLdYIBa4tHUHQXSjGIAZgIGIcyXg?e=rzkHI6";
 
+    let ytoPercentage = 0;
+    let tutkinnonOsatPercentage = 0;
+
+    try {
+        const response = await fetch(excelUrl);
+        const arrayBuffer = await response.arrayBuffer();
+        const workbook = XLSX.read(arrayBuffer, { type: "array" });
+
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+
+        // Read cell A1 and B1
+        ytoPercentage = parseFloat(sheet["A1"].v);
+        tutkinnonOsatPercentage = parseFloat(sheet["B1"].v);
+    } catch (error) {
+        console.error("Error loading Excel file:", error);
+        // fallback values if needed
+        ytoPercentage = 1;
+        tutkinnonOsatPercentage = 2;
+    }
+
+    // DOM elements
     const ytoProgress = document.getElementById("yto");
     const tutkinnonOsatProgress = document.getElementById("tutkinnon-osat");
-
     const ytoPercentageText = document.getElementById("yto-percentage");
     const tutkinnonOsatPercentageText = document.getElementById("tutkinnon-osat-percentage");
-
     const ytoCanvas = document.getElementById("yto-canvas");
     const tutkinnonOsatCanvas = document.getElementById("tutkinnon-osat-canvas");
 
+    // Sprite sheet
     const spriteSheet = new Image();
-    spriteSheet.src = "images/snail.png"; // Path to the spritesheet
+    spriteSheet.src = "images/snail.png";
 
-    // Function to update progress bar and canvas positions
+    // Update progress bars and canvas positions
     function updateProgressBars() {
         if (ytoProgress) {
-            ytoProgress.value = ytoPercentage; // Set YTO progress bar value
-            ytoPercentageText.textContent = `${ytoPercentage}%`; // Update percentage text
-            moveCanvas(ytoCanvas, ytoProgress, ytoPercentage); // Move canvas box
+            ytoProgress.value = ytoPercentage;
+            ytoPercentageText.textContent = `${ytoPercentage}%`;
+            moveCanvas(ytoCanvas, ytoProgress, ytoPercentage);
         }
-
         if (tutkinnonOsatProgress) {
-            tutkinnonOsatProgress.value = tutkinnonOsatPercentage; // Set Tutkinnon osat progress bar value
-            tutkinnonOsatPercentageText.textContent = `${tutkinnonOsatPercentage}%`; // Update percentage text
-            moveCanvas(tutkinnonOsatCanvas, tutkinnonOsatProgress, tutkinnonOsatPercentage); // Move canvas box
+            tutkinnonOsatProgress.value = tutkinnonOsatPercentage;
+            tutkinnonOsatPercentageText.textContent = `${tutkinnonOsatPercentage}%`;
+            moveCanvas(tutkinnonOsatCanvas, tutkinnonOsatProgress, tutkinnonOsatPercentage);
         }
     }
 
-    // Function to move the canvas box based on the percentage
     function moveCanvas(canvas, progressBar, percentage) {
-        const progressBarWidth = progressBar.offsetWidth; // Get the width of the progress bar
-        const canvasWidth = canvas.offsetWidth; // Get the width of the canvas
-        const position = (progressBarWidth * percentage) / 100 - canvasWidth / 2; // Calculate the position
-
-        // Set the canvas position
+        const progressBarWidth = progressBar.offsetWidth;
+        const canvasWidth = canvas.offsetWidth;
+        const position = (progressBarWidth * percentage) / 100 - canvasWidth / 2;
         canvas.style.position = "absolute";
-        canvas.style.left = `${Math.max(0, position)}px`; // Ensure it doesn't go outside the bar
-        canvas.style.top = "0"; // Align vertically inside the progress bar
+        canvas.style.left = `${Math.max(0, position)}px`;
+        canvas.style.top = "0";
     }
 
     // Initial setup
