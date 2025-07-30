@@ -180,3 +180,18 @@ footer {
     font-size: 1em; /* Further reduce font size for very small screens */
   }
 }
+
+.previous-update {
+  color: #b0b0b0 !important;   /* Lighter grey for clarity */
+  font-style: normal;          /* Remove italic */
+  text-shadow: none !important;/* Remove any shadow */
+  font-size: 0.3em;            /* Match updated size */
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+
+.previous-bar-percentage {
+    color: #aaa;
+    margin-right: 0.5em;
+    font-style: italic;
+}

@@ -1,28 +1,28 @@
 import { drawFrame, startAnimation } from "./animation.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
-    const excelUrl = "https://eduamiedu-my.sharepoint.com/:x:/g/personal/lauri_ahmas_taitotalo_fi/EbJVp-4Y13dEqEIVzvZLdYIBa4tHUHQXSjGIAZgIGIcyXg?e=rzkHI6";
+ document.addEventListener("DOMContentLoaded", async () => {
+//     const excelUrl = "https://eduamiedu-my.sharepoint.com/:x:/g/personal/lauri_ahmas_taitotalo_fi/EbJVp-4Y13dEqEIVzvZLdYIBa4tHUHQXSjGIAZgIGIcyXg?e=rzkHI6";
 
-    let ytoPercentage = 0;
-    let tutkinnonOsatPercentage = 0;
+    let ytoPercentage = 33;
+    let tutkinnonOsatPercentage = 18;
 
-    try {
-        const response = await fetch(excelUrl);
-        const arrayBuffer = await response.arrayBuffer();
-        const workbook = XLSX.read(arrayBuffer, { type: "array" });
+//     try {
+//         const response = await fetch(excelUrl);
+//         const arrayBuffer = await response.arrayBuffer();
+//         const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
+//         const sheetName = workbook.SheetNames[0];
+//         const sheet = workbook.Sheets[sheetName];
 
-        // Read cell A1 and B1
-        ytoPercentage = parseFloat(sheet["A1"].v);
-        tutkinnonOsatPercentage = parseFloat(sheet["B1"].v);
-    } catch (error) {
-        console.error("Error loading Excel file:", error);
-        // fallback values if needed
-        ytoPercentage = 1;
-        tutkinnonOsatPercentage = 2;
-    }
+//         // Read cell A1 and B1
+//         ytoPercentage = parseFloat(sheet["A1"].v);
+//         tutkinnonOsatPercentage = parseFloat(sheet["B1"].v);
+//     } catch (error) {
+//         console.error("Error loading Excel file:", error);
+//         // fallback values if needed
+//         ytoPercentage = 1;
+//         tutkinnonOsatPercentage = 2;
+//     }
 
     // DOM elements
     const ytoProgress = document.getElementById("yto");
