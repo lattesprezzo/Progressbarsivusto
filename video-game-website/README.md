@@ -15,7 +15,7 @@ The project consists of the following files:
 - Header with the title "Ryhmän edistyminen - the game".
 - Two progress bars:
   - "YTO" which updates to its maximum value on page load.
-  - "Tutkinnon osat" which is set to 2%.
+  - "Tutkinnon osat" which is set to a certain %.
 - Responsive design using Flexbox for a seamless experience on mobile devices.
 
 ## Getting Started
